@@ -5,7 +5,7 @@ COPY . .
 RUN npm install -g @angular/cli
 RUN npm install
 RUN npm run build
-
+# see if this works.
 # Step 2: Serve with Nginx
 FROM nginx:alpine
 COPY --from=builder /app/dist/koreskills /usr/share/nginx/html
