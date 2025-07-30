@@ -1,0 +1,424 @@
+<header>
+  <div class="background-sky hero"></div>
+  
+  <section id="intro">
+    <div class="container-fluid">
+      <div class="row" style="margin-top: 0px;">
+        <div class="col-12" style="padding-top: 40px;">
+          <mat-toolbar style="background-color: rgba(233, 233, 253, 0.034); margin: 3px;">
+            <img src="../assets/koreskillslogo.png" height="120" style="padding-top: 20px;" />
+            <span class="example-spacer"></span>
+            <span ><a href="mailto:info@koreskills.com" style="text-decoration: none; color: white;">info@koreskills.com</a></span>
+           
+          </mat-toolbar>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">&nbsp;</div>
+      </div>
+    
+      <div class="row">
+        <div class="col-12" style="padding-top: 40px;">
+          <span class="headertext">Practical Coding Skills for K-12 Students</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12" style="padding-top: 5px;">
+          <span class="subheadertext">Live Virtual Classes • Led by Experts • San Francisco Bay Area-Based</span>
+        </div>
+      </div>
+      
+      <!--<div class="row">
+        <div class="col-12">
+          <img src="../assets/express_interest_here.png" style="height: 40px;" />
+        </div>
+      </div>
+    -->
+    </div>
+  </section>
+</header>
+
+<body style="background-color:whitesmoke; margin-top: 20px;">
+  <div class="container" style="padding-top: 10px;">
+    <div class="row" style="padding-top: 30px;">
+      <div class="col-12">&nbsp;</div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4 col-md-2 center-image">
+        
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <!-- Display on md and larger screens -->
+        <div style="position: relative;" class="d-none d-lg-block">
+          <img src="../assets/expressinteresthere.png" alt="Express Interest"
+               style="position: absolute; top: -45px; left: 20%; transform: translateX(-50%); z-index: 10; height: 160px;" />
+        </div>
+        <!-- Display on md and larger screens -->
+        <div style="position: relative;" class="d-none d-md-block d-lg-none">
+          <img src="../assets/expressinteresthere.png" alt="Express Interest"
+               style="position: absolute; top: -45px; left: 35%; transform: translateX(-50%); z-index: 10; height: 160px;" />
+        </div>
+        <!-- Display on xs and sm screens -->
+        <div style="position: relative;" class="d-block d-md-none">
+          <img src="../assets/expressinterestheresmall.png" alt="Express Interest"
+               style="position: absolute; top: -55px; left: 30%; transform: translateX(-50%); z-index: 10; height: 160px;" />
+        </div>
+        <mat-card>
+          <mat-card-content>
+            <mat-stepper orientation="horizontal" #stepper (selectionChange)="onStepChange($event)">
+              <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
+                <form [formGroup]="firstFormGroup">
+                  <ng-template matStepLabel>Contact</ng-template>
+                      
+                  <table class="example-full-width" cellspacing="0" style="margin-top: 40px;">
+                   <tr>
+                      <td colspan="4">
+                        <form #chipForm="ngForm">
+                          <h4>Choose skills interested in</h4>
+                          <mat-chip-listbox multiple [(ngModel)]="selectedChips" name="skills" aria-label="Skill selection">
+                            <mat-chip-option value="HTML">HTML</mat-chip-option>
+                            <mat-chip-option value="Python">Python</mat-chip-option>
+                            <mat-chip-option value="Java" color="accent">Java</mat-chip-option>
+                            <mat-chip-option value="Angular" color="warn">Angular</mat-chip-option>
+                            <mat-chip-option value="Other" color="warn">Other</mat-chip-option>
+                          </mat-chip-listbox>
+                        </form>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="4">
+                        <mat-form-field class="example-full-width">
+                          <mat-label>Name</mat-label>
+                          <input matInput placeholder="Last name, First name" formControlName="fullName" required>
+                          <mat-error *ngIf="firstFormGroup.controls.fullName.hasError('required')">
+                            Full name is <strong>required</strong>
+                          </mat-error>
+                        </mat-form-field>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">
+                        <mat-form-field class="example-full-width">
+                          <mat-label>Telephone</mat-label>
+                          <span matPrefix>+1 &nbsp;</span>
+                          <input type="tel" formControlName="phoneNumber" matInput placeholder="555-555-1234">
+                        </mat-form-field>
+                      </td>
+                      <td colspan="2">
+                        <mat-form-field class="example-full-width">
+                          <mat-label>Email Address</mat-label>
+                          <input type="email" matInput formControlName="emailAddress" required="true"
+                            [errorStateMatcher]="matcher" placeholder="Ex. useremail@domain.com">
+                          <mat-hint>Contact email address.</mat-hint>
+                          <mat-error
+                            *ngIf="firstFormGroup.controls.emailAddress.hasError('email') && !firstFormGroup.controls.emailAddress.hasError('required')">
+                            Please enter a valid email address
+                          </mat-error>
+                          <mat-error *ngIf="firstFormGroup.controls.emailAddress.hasError('required')">
+                            Email is <strong>required</strong>
+                          </mat-error>
+                        </mat-form-field>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="width: 20%;">
+                        <mat-form-field class="example-full-width">
+                          <mat-label>Student Grade</mat-label>
+                          <mat-select formControlName="studentGrade" required>
+                            <mat-option value="Grade 6">Grade 6</mat-option>
+                            <mat-option value="Grade 7">Grade 7</mat-option>
+                            <mat-option value="Grade 8">Grade 8</mat-option>
+                            <mat-option value="Grade 9">Grade 9</mat-option>
+                            <mat-option value="Grade 10">Grade 10</mat-option>
+                            <mat-option value="Grade 11">Grade 11</mat-option>
+                            <mat-option value="Grade 12">Grade 12</mat-option>
+                            <mat-option value="Grade Other">Other</mat-option>
+                          </mat-select>
+                          <mat-error *ngIf="firstFormGroup.controls.studentGrade.hasError('required')">
+                            Grade is <strong>required</strong>
+                          </mat-error>
+                        </mat-form-field>
+                      </td>
+                      <td colspan="3">
+                        <mat-form-field class="example-full-width">
+                          <mat-label>Student Name</mat-label>
+                          <input matInput placeholder="Last name, First name" formControlName="studentName" required>
+                          <mat-error *ngIf="firstFormGroup.controls.studentName.hasError('required')">
+                            Student name is <strong>required</strong>
+                          </mat-error>
+                        </mat-form-field>
+                      </td>
+
+                    </tr>
+                    <tr>
+                      <td colspan="4">
+                        <mat-form-field class="example-full-width">
+                          <mat-label>Notes</mat-label>
+                          <textarea matInput formControlName="notes" placeholder="Any additional notes"></textarea>
+                        </mat-form-field>
+                      </td>
+                    </tr>
+                  </table>
+                  <div>
+                    <button mat-raised-button color="primary" style="width:30%" matStepperNext [disabled]="!firstFormGroup.valid">Next</button>
+                  </div>
+                </form>
+              </mat-step>
+              
+              <mat-step>
+                <ng-template matStepLabel>Review and Submit</ng-template>
+                <table class="example-full-width" cellspacing="0" style="margin-top: 40px;">
+                  <tr>
+                    <td style="width:30%">
+                      <h3>Full Name :</h3>
+                    </td>
+                    <td>
+                      <h2>{{fullname}}</h2>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h3>Phone Number :</h3>
+                    </td>
+                    <td>
+                      <h2>{{phonenumber}}</h2>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h3>Email Address :</h3>
+                    </td>
+                    <td>
+                      <h2>{{emailaddress}}</h2>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h3>Student Name :</h3>
+                    </td>
+                    <td>
+                      <h2>{{studentname}}</h2>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h3>Student Grade :</h3>
+                    </td>
+                    <td>
+                      <h2>{{studentgrade}}</h2>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h3>Skill Interested In :</h3>
+                    </td>
+                    <td>
+                      <h2>{{skillinterestedin}}</h2>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h3>Notes :</h3>
+                    </td>
+                    <td>
+                      <h2>{{notes}}</h2>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">
+                      <table class="example-full-width">
+                        <tr>
+                          <td style="width: 80%;">
+                            <button mat-raised-button matStepperPrevious>Back</button>
+                            <button mat-raised-button color="primary" style="width:50%; margin-left: 20px;"
+                              (click)="submit(stepper)">Submit</button>
+                          </td>
+                          <td>
+                            <button mat-raised-button color="warn" (click)="cleardata();stepper.reset()">Reset</button>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </mat-step>
+            </mat-stepper>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="row">
+        <div class="col-12">&nbsp;</div>
+      </div>
+      <div class="row" style="padding-top: 40px;">
+        <div class="col-12 text-center">
+          <h2 style="font-weight: bold;">Learn from Cutting-Edge Research Professionals</h2>
+          <p style="font-size: 18px; line-height: 1.6; max-width: 900px; margin: auto;">
+            KoreSkills team brings experience from <strong>NASA</strong> (Johnson Space Center, Ames Research Center),
+            the <strong>US Department of Defense</strong>, <strong>US Space Force</strong>,
+            <strong>Federal Aviation Administration</strong>, and leading <strong>Silicon Valley startups</strong>.
+          </p>
+        </div>
+      </div>
+      <div class="row" style="padding-top: 20px;">
+        <div class="col-12">
+          
+            <div class="row">
+              <div class="col-12 text-center">
+                <img src="../assets/nasa-logo.svg" style="height: 120px;" />
+                <img src="../assets/hrp-logo-without-backgrd-transparency.png" style="height: 120px;" />
+                <img src="../assets/Seal_of_the_United_States_Space_Force.svg.png" style="height: 120px; padding:10px;" />
+                <img src="../assets/Federal_Aviation_Administration_logo.png" style="height: 110px;" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 text-center">
+                <img src="../assets/DoD-Logo.png" style="height: 120px;" />
+              </div>
+            </div>
+
+            <div class="row" style="padding-top: 20px; background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12); " >
+              <div class="col-12">
+                <div class="row" >
+                  <div class="col-12">
+                    <h1 style="color: white;">Questions?</h1>
+                    <mat-accordion>
+                      <mat-expansion-panel style="background-color: transparent;">
+                        <mat-expansion-panel-header>
+                          <mat-panel-title style="color: white;">
+                            <h3>How are lessons delivered?</h3>
+                          </mat-panel-title>
+                          <mat-panel-description>
+                            
+                          </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <p style="color: white;">We use a combination of Google classroom, MS Teams for delivering our lessons.</p>
+                      </mat-expansion-panel>
+                      <mat-expansion-panel (opened)="panelOpenState = true"
+                                           (closed)="panelOpenState = false" style="background-color: transparent;">
+                        <mat-expansion-panel-header>
+                          <mat-panel-title style="color: white;">
+                           <h3> Why lean to code?</h3>
+                          </mat-panel-title>
+                          <mat-panel-description>
+                          </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <p style="color: white;">Whether to pursue a career in coding depends on one's interests, aptitudes, and career goals. Coding can be a rewarding career, offering high salaries, job security, and opportunities for creativity and problem-solving. However, it can also be demanding and require constant learning and adaptation. Researching the field and enrolling in Caltech coding Bootcamp can help with the decision.</p>
+                      </mat-expansion-panel>
+
+                      <mat-expansion-panel style="background-color: transparent;">
+                        <mat-expansion-panel-header>
+                          <mat-panel-title style="color: white;">
+                            <h3>What ages or grades is the program designed for?</h3>
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <p style="color: white;">Our programs are designed for students in grades 4–12, with age-appropriate curriculum across elementary, middle, and high school levels.</p>
+                      </mat-expansion-panel>
+
+                      <mat-expansion-panel style="background-color: transparent;">
+                        <mat-expansion-panel-header>
+                          <mat-panel-title style="color: white;">
+                            <h3>Does my child need prior coding experience?</h3>
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <p style="color: white;">Not at all! Our beginner courses are designed for students new to programming, while intermediate and advanced options are available for returning learners.</p>
+                      </mat-expansion-panel>
+
+                      <mat-expansion-panel style="background-color: transparent;">
+                        <mat-expansion-panel-header>
+                          <mat-panel-title style="color: white;">
+                            <h3>What technologies or languages are taught?</h3>
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <p style="color: white;">Students learn Python, HTML/CSS, Java, Scratch, and more—through real projects that build problem-solving and computational thinking.</p>
+                      </mat-expansion-panel>
+
+                      <mat-expansion-panel style="background-color: transparent;">
+                        <mat-expansion-panel-header>
+                          <mat-panel-title style="color: white;">
+                            <h3>How long are the classes?</h3>
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <p style="color: white;">Classes are typically 60–90 minutes each and run for 4 to 6 weeks, depending on the course. Sessions are live and fully interactive.</p>
+                      </mat-expansion-panel>
+
+                      <!-- Additional FAQ panels -->
+                      <mat-expansion-panel style="background-color: transparent;">
+                        <mat-expansion-panel-header>
+                          <mat-panel-title style="color: white;">
+                            <h3>What is the class size?</h3>
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <p style="color: white;">Each class typically has 6–10 students to ensure every learner gets individual attention from the instructor.</p>
+                      </mat-expansion-panel>
+
+                      <mat-expansion-panel style="background-color: transparent;">
+                        <mat-expansion-panel-header>
+                          <mat-panel-title style="color: white;">
+                            <h3>What are the technical requirements for students?</h3>
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <p style="color: white;">Students will need a computer with internet access and a modern web browser. Some classes may also require installing a free code editor like VS Code.</p>
+                      </mat-expansion-panel>
+
+                      <mat-expansion-panel style="background-color: transparent;">
+                        <mat-expansion-panel-header>
+                          <mat-panel-title style="color: white;">
+                            <h3>Are the classes recorded?</h3>
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <p style="color: white;">Yes, most sessions are recorded so students can review materials later or catch up if they miss a class.</p>
+                      </mat-expansion-panel>
+
+                      <mat-expansion-panel style="background-color: transparent;">
+                        <mat-expansion-panel-header>
+                          <mat-panel-title style="color: white;">
+                            <h3>How do I know which course is right for my child?</h3>
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <p style="color: white;">You can contact us directly and we’ll help evaluate your child’s experience and interests to recommend a suitable course track.</p>
+                      </mat-expansion-panel>
+                      <!-- End Additional FAQ panels -->
+                    </mat-accordion>
+                    
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-3" style="background-repeat: no-repeat; background-image: url(../assets/color-scheme-left.svg); background-position: bottom left; background-size: auto; min-height: 400px;">
+                  </div>
+                  <div class="col-3" style="background-repeat: no-repeat; background-image: url(../assets/color-scheme-right.svg); background-position: bottom left; background-size: auto; min-height: 300px;">
+                  </div>
+                  <div class="col-6"  style="vertical-align:bottom; background-repeat: no-repeat; background-image: url(../assets/color-gradient-spacecraft.svg); background-position: left; background-size: auto; min-height: 500px;">
+                    <!-- <img src="../assets/color-scheme-right.svg" style="vertical-align: text-bottom; height: 200px;" />   -->
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<!-- Footer -->
+<footer style="background-color: #f8f9fa; padding: 20px 0; width: 100%;">
+  <div class="container-fluid text-center text-md-start">
+    <div class="row justify-content-between align-items-center px-4">
+      <div class="col-md-6 text-md-start text-center mb-2 mb-md-0">
+        <h5 class="fw-bold mb-1">KoreSkills</h5>
+        <p style="margin: 0;">Practical coding skills for K-12 students. Live virtual classes. Based in the San Francisco Bay Area.</p>
+      </div>
+      <div class="col-md-4 text-md-end text-center">
+        <p style="margin: 0;"><strong>Contact:</strong> info@koreskills.com</p>
+        <p style="margin: 0;">Fremont, CA · +1 (510) 556-9197</p>
+      </div>
+    </div>
+  </div>
+  <div class="text-center mt-3" style="font-size: 14px; color: #666;">
+    © 2025 KoreSkills.com
+  </div>
+</footer>
+<!-- Footer -->
+
+  
+</body>
+
