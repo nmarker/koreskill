@@ -4,7 +4,7 @@ WORKDIR /app
 COPY . .
 RUN npm install -g @angular/cli
 RUN npm install
-RUN npm run build
+RUN npm run build -- --configuration=production
 # see if this works.
 # Step 2: Serve with Nginx
 FROM nginx:alpine
